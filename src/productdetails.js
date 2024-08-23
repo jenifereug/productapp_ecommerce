@@ -5,7 +5,7 @@ function Productdetails(){
     const[productlist,setProductList]=useState();
     const navigate=useNavigate();
     const goToproduct=(id)=>{
-        navigate('/product')
+        navigate('/')
       }
       const goTocart=(id)=>{
         navigate('/cart')

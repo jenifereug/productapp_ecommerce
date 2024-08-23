@@ -85,21 +85,27 @@ const[subtotal,setsubtotal]=useState(0);
   },)
     return(
     <div>
-      {searchName}
       {Cartlist.length>0?
     <div>
-      <table>
-      <thead>
+      <h4 style={{marginTop:"2%"}}>Cart List</h4>
+      <hr/>
+      <table className="table">
+      <thead className="thead-dark">
           <tr><th>PRODUCT</th><th>NAME OF PRODUCT</th><th>PRICE</th><th>QUANTITY</th><th>REMOVE</th><th>TOTAL</th></tr>
           </thead>
           <tbody>
        {Cartlist!=null && Cartlist.map((obj,index)=>(
           <tr>
-             <td><img src="img/phone.jpeg" class="card-img-top" height="50" width="50" alt="..." /></td>
+             <td>
+             <img src={obj.productimage} height="50" style={{width:"35%"}}></img>
+              {/* <img src="img/phone.jpeg" class="card-img-top" height="50" style={{width:"35%"}} alt="..." /> */}
+              </td>
              <td>{obj.id}</td>
              <td>{obj.price}</td>
-             <td><button onClick={()=>updateCart(obj,'-')}>-</button>{obj.qty}<button onClick={()=>updateCart(obj,'+')}>+</button></td>
-             <td><button onClick={()=>removeCart(obj)}>Remove</button></td>
+             <td><button className="btn btn-secondary" onClick={()=>updateCart(obj,'-')}>-</button>{obj.qty}<button className="btn btn-secondary" onClick={()=>updateCart(obj,'+')}>+</button></td>
+             <td><svg style={{cursor:"pointer"}} onClick={()=>removeCart(obj)} xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#D20103"><path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/></svg>
+             {/* <button className="btn btn-danger" onClick={()=>removeCart(obj)}>Remove</button> */}
+             </td>
              <td>{obj.total}</td>
        </tr>
        ))
